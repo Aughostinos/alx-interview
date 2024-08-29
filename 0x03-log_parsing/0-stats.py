@@ -10,6 +10,7 @@ def print_stats(total_size, status_counts):
         if status_counts[status] > 0:
             print("{}: {}".format(status, status_counts[status]))
 
+
 total_size = 0
 status_counts = {
     200: 0, 301: 0, 400: 0, 401: 0,
@@ -27,7 +28,7 @@ try:
             continue
         ip, _, date, method, url, status_code, file_size = parts
 
-        if (method != 'GET' or url != '/projects/260' or 
+        if (method != 'GET' or url != '/projects/260' or
                 not status_code.isdigit() or not file_size.isdigit()):
             continue
 
