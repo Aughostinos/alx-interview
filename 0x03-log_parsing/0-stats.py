@@ -15,7 +15,7 @@ total_size = 0
 status_counts = {
     200: 0, 301: 0, 400: 0, 401: 0,
     403: 0, 404: 0, 405: 0, 500: 0
-    }
+}
 line_count = 0
 
 try:
@@ -23,13 +23,14 @@ try:
         line_count += 1
         parts = line.split()
 
-        # validating and parsing line
-        if len(parts) != 7:
+        # Validating and parsing line
+        if len(parts) < 7:
             continue
-        ip, _, date, method, url, status_code, file_size = parts
 
-        if (method != 'GET' or url != '/projects/260' or
-                not status_code.isdigit() or not file_size.isdigit()):
+        status_code = parts[-2]
+        file_size = parts[-1]
+
+        if not status_code.isdigit() or not file_size.isdigit():
             continue
 
         status_code = int(status_code)
