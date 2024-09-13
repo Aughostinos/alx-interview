@@ -20,7 +20,7 @@ def solve_nqueens(N, board=[], row=0):
         # All queens are placed
         print([[i, board[i]] for i in range(N)])
         return
-    
+
     for col in range(N):
         if is_safe(board, row, col):
             board.append(col)
