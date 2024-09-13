@@ -1,5 +1,7 @@
 #!/usr/bin/python3
+"""0x05. N Queens"""
 import sys
+
 
 def is_safe(board, row, col):
     """Check if it's safe to place a queen at board[row][col]."""
@@ -10,6 +12,7 @@ def is_safe(board, row, col):
            board[i] + i == col + row:
             return False
     return True
+
 
 def solve_nqueens(N, board=[], row=0):
     """ find all solutions"""
@@ -23,6 +26,7 @@ def solve_nqueens(N, board=[], row=0):
             board.append(col)
             solve_nqueens(N, board, row + 1)
             board.pop()
+
 
 if __name__ == "__main__":
     # check number of arguments
