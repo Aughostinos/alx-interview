@@ -14,22 +14,21 @@ def is_safe(board, row, col):
     return True
 
 
-def solve_nqueens(N, board=[], row=0):
-    """ find all solutions"""
+def solve_nqueens(N, board, row):
+    """Recursively solve the N queens problem"""
     if row == N:
-        # All queens are placed
+        # All queens are placed, print the solution
         print([[i, board[i]] for i in range(N)])
         return
     
     for col in range(N):
         if is_safe(board, row, col):
-            board.append(col)
+            board[row] = col
             solve_nqueens(N, board, row + 1)
-            board.pop()
 
 
 if __name__ == "__main__":
-    # check number of arguments
+    # Check if the right number of arguments is provided
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
@@ -40,9 +39,13 @@ if __name__ == "__main__":
         print("N must be a number")
         sys.exit(1)
 
-    # make sure that N is greater than or equal to 4
+    # Validate that N is at least 4
     if N < 4:
         print("N must be at least 4")
         sys.exit(1)
 
-    solve_nqueens(N)
+    # Initialize the board with -1 to indicate no queen is placed
+    board = [-1 for _ in range(N)]
+    
+    # Solve the N queens problem
+    solve_nqueens(N, board, 0)
