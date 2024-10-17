@@ -32,7 +32,7 @@ def isWinner(x, nums):
         if primes_count % 2 == 1:
             maria_wins += 1
         else:
-            ben_wins +=1
+            ben_wins += 1
 
     if maria_wins > ben_wins:
         return "Maria"
